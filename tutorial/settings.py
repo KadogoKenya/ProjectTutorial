@@ -31,6 +31,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'cloudinary_storage',
+    'cloudinary',
     'bootstrap3',
     'crispy_forms',
     'django.contrib.admin',
@@ -92,6 +94,11 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ],
 }
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'dew5ge1ch',
+    'API_KEY': '361751723152852',
+    'API_SECRET': 'l2VlpcjUV6Nk9Gh9qi5UCwqDyZ4'
+}
 
 
 # Password validation
@@ -147,6 +154,9 @@ STATICFILES_DIRS = [
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+MEDIA_URL = '/media/'  # or any prefix you choose
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 
 LOGIN_REDIRECT_URL='index'
