@@ -10,6 +10,7 @@ class Tutorial(models.Model):
     pub_date = models.DateTimeField(auto_now_add=True)
     updated_date=models.DateTimeField(auto_now_add=True)
     Author = models.CharField(max_length=50)
-    Published=models.BooleanField()
+    Published=models.BooleanField(db_index=True, default=False)
+    
     
     
