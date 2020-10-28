@@ -1032,7 +1032,7 @@ p, blockquote, .p {
 }
 img {
     max-width: 100%;
-    height: auto
+    height: 100%;
 }
 input, textarea, select, button {
     font-family: "apercu", sans-serif;

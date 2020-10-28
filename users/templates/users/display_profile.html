@@ -6,9 +6,8 @@
 
 <div class="media row p-5">
 
-    <div class="col-md-5">
-        <img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
-        <!-- <img class="col-md-6 account-img" src="{{ user.profile.image.url }}" width="100" height="100"> -->
+    <div class="col-md-5 p-5">
+        <img class="rounded-circle account-img" src="{{ user.profile.image.url }} " width="200" height="200">
     </div>
     <div class="col-md-7 mt-3">
         <div class="media-body">
@@ -23,13 +22,13 @@
                 </a>
 
             </div>
-            <div class="modal fade" id="basicExampleModal" tabindex="-1" role="dialog"
+            <div class="modal" id="basicExampleModal" tabindex="-1" role="dialog"
                 aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel"></h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <button type="button" class="close btn btn-info" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
