@@ -3,56 +3,51 @@
 {% load static %}
 {% block content %}
 
-<div class="media row">
-<div class="col-md-2"></div>
-    <div class="col-md-3">
-        <img class="account-img" src="{{ user.profile.image.url }}">
-    </div>
 
-    <div class="col-md-5 text-center mt-3">
+<div class="media row p-5">
+
+    <div class="col-md-5">
+        <img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
+        <!-- <img class="col-md-6 account-img" src="{{ user.profile.image.url }}" width="100" height="100"> -->
+    </div>
+    <div class="col-md-7 mt-3">
         <div class="media-body">
             <div class="account-heading">
 
                 <span class="mr-3 text-secondary username">{{ user.username }}</span>
 
-                <a href="{% url 'profile' %}" class="btn btn-sm btn-outline-secondary mr-3"><strong>EditProfile</strong>
+                <a href="{% url 'profile' %}" class="btn btn-sm btn-outline-secondary mr-3"><strong>Edit Profile</strong></a>
+
+                <a class="mt-3" class="btn btn-primary" data-toggle="modal" data-target="#basicExampleModal">
+                    <i class="fa fa-cog fa-3x mt-3"></i>
                 </a>
-            </div>
 
+            </div>
+            <div class="modal fade" id="basicExampleModal" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel"></h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body text-center">
+                           <h2>Log Out</h2> 
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Dismiss</button>
+                            <a href="{% url 'logout' %}" class="">
+                                <button type="button" v class="btn btn-primary">Proceed to Logout</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           
             <p class="text-secondary">{{ user.profile.bio }}</p>
-            <!-- <div class="project-details mt-3 mb-3">
-                <span class="mr-5"><strong>{{projects.count}}</strong> Projects</span>
-            </div>
-
-            <div class="btn btn-#0099CC">
-                <a class=""href="{% url 'projector_api' %}">Projects Api Endpoints</a>
-            </div>
-            <div class="btn btn-#0099CC">
-                <a class=""href="{% url 'profiler_api' %}">Profile Api Endpoint</a>
-            </div> -->
-
-            <br>
-            
-            <div class="btn btn-danger">
-                <a href="{% url 'logout' %}">Log out</a>
-            </div>
         </div>
     </div>
 </div>
-<!-- <div class="container">
-    {% for project in projects %}
-    <div class="card mb-4 mt-4">
-        <div class="card-body">
-            <div class="card-text">
-                <a href="{% url 'project-detail' project.id %}" class="article-title">
-                    <div style="background-image: url({{project.image.url}});background-size: contain;position: sticky">
-                        <img src="{{ project.image.url }}" style="visibility: hidden;" width="100%" />
-                    </div>
-                </a>
-            </div>
-        </div>
-    </div>
-    {% endfor %}
-</div> -->
-
 {% endblock content %}
