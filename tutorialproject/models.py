@@ -16,5 +16,17 @@ class Tutorial(models.Model):
     Published=models.BooleanField()
     Unpublished=models.BooleanField(default=False)
 
+    def save_project(self):
+        self.save()
+    
+    def delete_project(self):
+        self.delete()
+    
+    def __str__(self):
+        return self.sitename
+
+    def get_absolute_url(self):        
+        return reverse('tutorialpoint')
+
     
     
