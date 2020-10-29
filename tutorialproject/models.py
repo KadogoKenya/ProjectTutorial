@@ -3,7 +3,7 @@ import cloudinary
 from django.urls import reverse
 from cloudinary.models import CloudinaryField
 from django.contrib.auth.models import User
-
+from tinymce.models import HTMLField
 
 # Create your models here.
 
