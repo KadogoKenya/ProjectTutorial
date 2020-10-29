@@ -23,3 +23,19 @@ class HelloView(APIView):
     def get(self, request):
         content = {'message': 'Hello, World!'}
         return Response(content)
+
+
+class TutorialCreateView(LoginRequiredMixin,CreateView):
+    
+    model = Tutorial
+    fields = ['title', 'description', 'image', 'content','Author','pub_date','updated_date','Published','Unpublished']
+    
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+
+class TutorialListView(ListView):
+    model = Project
+    template_name = 'tutorial/tutorialpoint.html'
+    context_object_name = 'tutorials'
+    ordering = ['-submitted']

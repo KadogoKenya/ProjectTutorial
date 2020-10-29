@@ -11,9 +11,9 @@ class Tutorial(models.Model):
     description = models.TextField()
     image = image = CloudinaryField('images/', blank=True)
     content=models.TextField(max_length=255)
+    Author = models.CharField(max_length=50, default='kate')
     pub_date = models.DateTimeField(auto_now_add=True)
     updated_date=models.DateTimeField(auto_now_add=True)
-    Author = models.CharField(max_length=50, default='kate')
     Published=models.BooleanField()
     Unpublished=models.BooleanField(default=False)
 
@@ -31,7 +31,7 @@ class Tutorial(models.Model):
         return self.tutorial
 
     def get_absolute_url(self):        
-        return reverse('index')
+        return reverse('tutorialpoint')
     
 
 
