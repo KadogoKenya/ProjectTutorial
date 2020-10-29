@@ -1,16 +1,10 @@
 from django.db import models
 import cloudinary
+from django.urls import reverse
 from cloudinary.models import CloudinaryField
 
 
 # Create your models here.
-
-class Author(models.Model):
-    name = models.CharField(max_length=200)
-    email = models.EmailField()
-
-    def __str__(self):
-        return self.name
 
 class Tutorial(models.Model):
     title = models.CharField(max_length=100)
@@ -18,8 +12,8 @@ class Tutorial(models.Model):
     image = image = CloudinaryField('images/', blank=True)
     content=models.TextField(max_length=255)
     pub_date = models.DateTimeField(auto_now_add=True)
-    mod_date=models.DateTimeField(auto_now_add=True)
-    authors = models.ManyToManyField(Author)
+    updated_date=models.DateTimeField(auto_now_add=True)
+    Author = models.CharField(max_length=50, default='kate')
     Published=models.BooleanField()
     Unpublished=models.BooleanField(default=False)
 
@@ -34,7 +28,7 @@ class Tutorial(models.Model):
         return images
 
     def __str__(self):
-        return self.title
+        return self.tutorial
 
     def get_absolute_url(self):        
         return reverse('index')
