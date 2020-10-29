@@ -35,7 +35,10 @@ class TutorialCreateView(LoginRequiredMixin,CreateView):
         return super().form_valid(form)
 
 class TutorialListView(ListView):
-    model = Project
+    model = Tutorial
     template_name = 'tutorial/tutorialpoint.html'
     context_object_name = 'tutorials'
     ordering = ['-submitted']
+
+class ProjectDetailView(DetailView):
+    model = Tutorial
