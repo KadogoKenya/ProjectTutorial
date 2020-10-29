@@ -11,6 +11,10 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+from decouple import config
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -82,10 +86,9 @@ WSGI_APPLICATION = 'tutorial.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE':'django.db.backends.postgresql',
         'NAME': 'tutorial',
-        'USER': 'kate',
-        'PASSWORD':'Kanini12',
+        
     }
 }
 
@@ -94,11 +97,17 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ],
 }
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'dew5ge1ch',
-    'API_KEY': '361751723152852',
-    'API_SECRET': 'l2VlpcjUV6Nk9Gh9qi5UCwqDyZ4'
-}
+# CLOUDINARY_STORAGE = {
+#     'CLOUD_NAME': 'dew5ge1ch',
+#     'API_KEY': '361751723152852',
+#     'API_SECRET': 'l2VlpcjUV6Nk9Gh9qi5UCwqDyZ4'
+# }
+
+cloudinary.config( 
+  cloud_name = config('Cloud_name'), 
+  api_key = config('API_Key'),
+  api_secret = config('API_Secret')
+)
 
 
 # Password validation
