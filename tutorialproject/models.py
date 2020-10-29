@@ -34,6 +34,11 @@ class Tutorial(models.Model):
 
     def get_absolute_url(self):        
         return reverse('tutorialpoint')
+
+    @classmethod
+    def search_by_title(cls,search_term):
+        tutorials = cls.objects.filter(title__icontains=search_term)
+        return tutorials
     
 
 
