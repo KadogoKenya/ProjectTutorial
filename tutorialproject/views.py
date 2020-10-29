@@ -34,11 +34,50 @@ class TutorialCreateView(LoginRequiredMixin,CreateView):
         form.instance.user = self.request.user
         return super().form_valid(form)
 
+
+
 class TutorialListView(ListView):
     model = Tutorial
-    template_name = 'tutorial/tutorialpoint.html'
+    template_name = 'tutorial/index.html'
     context_object_name = 'tutorials'
-    ordering = ['-submitted']
+    ordering = ['-Published']
+
+def index(request):
+
+    tutorials = Tutorial.get_all_images()
+    print(tutorials)
+    context={
+        'tutorials':tutorials,
+    }
+
+    return redirect(request,'index.html', context)
+
 
 class TutorialDetailView(DetailView):
     model = Tutorial
+
+class TutorialUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    model = Tutorial
+    fields = ['title', 'description', 'image', 'content','Author','Published','Unpublished']
+    
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+   
+    def test_func(self):
+        tutorial = self.get_object(Tutorial)
+        if self.request.user == tutorial.user:
+            return True
+        return False
+
+class TutorialDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = Tutorial
+    success_url = '/tutorialproject'
+    
+
+    def test_func(self):
+        tutorial = self.get_object()
+        if self.request.user == tutorial.user:
+            return True
+        return False

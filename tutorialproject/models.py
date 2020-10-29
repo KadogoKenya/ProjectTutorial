@@ -16,6 +16,8 @@ class Tutorial(models.Model):
     updated_date=models.DateTimeField(auto_now_add=True)
     Published=models.BooleanField()
     Unpublished=models.BooleanField(default=False)
+    url = models.CharField(max_length=50, default='www.github.com')
+    # submitted = models.DateTimeField(auto_now_add=True, default='2000-01-02')
 
     def save_tutorial(self):
         self.save()
@@ -28,7 +30,7 @@ class Tutorial(models.Model):
         return images
 
     def __str__(self):
-        return self.tutorial
+        return self.title
 
     def get_absolute_url(self):        
         return reverse('tutorialpoint')
