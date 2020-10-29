@@ -26,6 +26,8 @@ urlpatterns = [
     path('tutorial/<int:pk>/update/', TutorialUpdateView.as_view(), name='tutorial-update'),
     path('tutorial/<int:pk>/delete/', TutorialDeleteView.as_view(), name='tutorial-delete'),
     url(r'^search/', views.search_results, name='search_results'),
+    url(r'^new/tutorial$', views.new_tutorial, name='new-tutorial')
+
 
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/refresh/', TokenRefreshView.as_view(), name='token_refresh'),

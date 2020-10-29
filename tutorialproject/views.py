@@ -12,6 +12,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.shortcuts import get_object_or_404
 from users.models import Profile
 from django.contrib.auth.decorators import login_required
+from .forms import NewTutorialForm
+
 
 # Create your views here.
 def index(request):
@@ -94,3 +96,18 @@ def search_results(request):
     else:
         message = "You haven't searched for any term"
         return render(request, 'tutorial/search.html',{"message":message})
+
+
+def new_tutorial(request):
+    current_user = request.user
+    if request.method == 'POST':
+        form = NewTutorialForm(request.POST, request.FILES)
+        if form.is_valid():
+            tutorial = form.save(commit=False)
+            tutorial.Author = current_user
+            tutorial.save()
+        return redirect('NewsToday')
+
+    else:
+        form = NewTutorialForm()
+    return render(request, 'new_tutorial.html', {"form": form})
