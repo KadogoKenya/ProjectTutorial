@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'cloudinary_storage',
     'cloudinary',
     'bootstrap3',
+    'tinymce',
     'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',

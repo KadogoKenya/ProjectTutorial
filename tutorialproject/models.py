@@ -2,6 +2,7 @@ from django.db import models
 import cloudinary
 from django.urls import reverse
 from cloudinary.models import CloudinaryField
+from django.contrib.auth.models import User
 
 
 # Create your models here.
@@ -11,7 +12,7 @@ class Tutorial(models.Model):
     description = models.TextField()
     image = image = CloudinaryField('images/', blank=True)
     content=models.TextField(max_length=255)
-    Author = models.CharField(max_length=50, default='kate')
+    Author = models.CharField(User, default='kate')
     pub_date = models.DateTimeField(auto_now_add=True)
     updated_date=models.DateTimeField(auto_now_add=True)
     Published=models.BooleanField()
