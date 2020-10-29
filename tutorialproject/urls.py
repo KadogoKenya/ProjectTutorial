@@ -6,6 +6,10 @@ from django.conf import settings
 from django.conf.urls.static import static
 from . import views
 
+from .views import  ProjectCreateView, ProjectListView, ProjectDetailView
+from django.conf import settings
+from django.conf.urls.static import static
+
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,

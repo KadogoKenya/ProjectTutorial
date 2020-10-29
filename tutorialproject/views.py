@@ -40,5 +40,5 @@ class TutorialListView(ListView):
     context_object_name = 'tutorials'
     ordering = ['-submitted']
 
-class ProjectDetailView(DetailView):
+class TutorialDetailView(DetailView):
     model = Tutorial
