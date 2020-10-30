@@ -40,8 +40,16 @@
             {% for tutorial in tutorials %}
             <div class="col-md-3 mb-4 p-5">
                 <div class="card">
+
+                    <div class="view overlay zoom">
+                        <img class="card-img-top view-overlay-zoom" height="500px" src="{{tutorial.image.url}}" alt="Card image cap">
+
+                        <div class="mask flex-center">
+                            <h2 class="white-text">Tutorial Community</h2>
+                        </div>
+                    </div>
                     
-                    <img class="card-img-top view-overlay-zoom" height="500px" src="{{tutorial.image.url}}" alt="Card image cap">
+                    <!-- <img class="card-img-top view-overlay-zoom" height="500px" src="{{tutorial.image.url}}" alt="Card image cap"> -->
                    
                     <div class="card-body">
                         <p class="card-text"><strong>Title : </strong>{{tutorial.title}}</p>

@@ -8,6 +8,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>New Tutorial</title>
+
+  <div class="row">
+    {% autoescape on %}
+    {{tutorial.post| safe}}
+   {% endautoescape %}
+
+</div>
+
   {{form.media}}
 
     {% block styles %}

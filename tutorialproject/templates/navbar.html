@@ -19,10 +19,9 @@
                   aria-label="Search">
                 <i class="fas fa-search" aria-hidden="true"></i>
             </form>
-            <div>
+          
                 <a href="{% url 'new-tutorial' %}" class="btn btn-lg btn-outline-success"><span>Add Tutorial</span>
 
-            </div>
             {% if user.is_authenticated %}
 
             <a href="{% url 'display_profile' %}" class="nav-item-nav-link mr-5" style="color: black">

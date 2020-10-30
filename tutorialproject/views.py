@@ -14,6 +14,11 @@ from users.models import Profile
 from django.contrib.auth.decorators import login_required
 from .forms import NewTutorialForm
 
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from .serializer import MerchSerializer
+
+
 
 # Create your views here.
 # def index(request):
@@ -38,21 +43,21 @@ class TutorialCreateView(LoginRequiredMixin,CreateView):
 
 
 
-# class TutorialListView(ListView):
-#     model = Tutorial
-#     template_name = 'tutorial/index.html'
-#     context_object_name = 'tutorials'
-#     ordering = ['-Published']
+class TutorialListView(ListView):
+    model = Tutorial
+    template_name = 'tutorial/index.html'
+    context_object_name = 'tutorials'
+    ordering = ['-pub_date']
 
-def index(request):
+# def index(request):
 
-    tutorials = Tutorial.get_all_tutorials()
-    print(tutorials)
-    context={
-        'tutorials':tutorials,
-    }
+#     tutorials = Tutorial.get_all_tutorials()
+#     print(tutorials)
+#     context={
+#         'tutorials':tutorials,
+#     }
 
-    return render(request,'tutorial/index.html', context)
+#     return render(request,'tutorial/index.html', context)
 
 
 class TutorialDetailView(DetailView):
@@ -111,3 +116,9 @@ def new_tutorial(request):
     else:
         form = NewTutorialForm()
     return render(request, 'new_tutorial.html', {"form": form})
+
+class MerchList(APIView):
+    def get(self, request, format=None):
+        all_merch = Tutorial.objects.all()
+        serializers = MerchSerializer(all_merch, many=True)
+        return Response(serializers.data)

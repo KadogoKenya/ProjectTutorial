@@ -6,7 +6,7 @@ from .models import Tutorial
 class NewTutorialForm(forms.ModelForm):
     class Meta:
         model = Tutorial
-        fields=['title','description','image','content','Published','Unpublished','url']
+        fields=['title','description','image','content','Author', 'Published','Unpublished','url']
         widgets = {
             'tags': forms.CheckboxSelectMultiple(),
         }
