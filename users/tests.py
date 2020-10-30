@@ -8,7 +8,7 @@ class TestProfile(TestCase):
         self.user = User(username='kate')
         self.user.save()
 
-        self.profile_test = Profile(user=self.user, bio='no human is limited', image='default.jpg' )
+        self.profile_test = Profile(user=self.user, bio='keep watching', image='default.jpg' )
         
     def test_instance(self):
         self.assertTrue(isinstance(self.profile_test, Profile))

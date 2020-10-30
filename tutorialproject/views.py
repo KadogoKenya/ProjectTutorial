@@ -16,8 +16,8 @@ from .forms import NewTutorialForm
 
 
 # Create your views here.
-def index(request):
-    return render(request, 'tutorial/index.html')
+# def index(request):
+#     return render(request, 'tutorial/index.html')
 
 class HelloView(APIView):
     permission_classes = (IsAuthenticated,)
@@ -38,21 +38,21 @@ class TutorialCreateView(LoginRequiredMixin,CreateView):
 
 
 
-class TutorialListView(ListView):
-    model = Tutorial
-    template_name = 'tutorial/index.html'
-    context_object_name = 'tutorials'
-    ordering = ['-Published']
+# class TutorialListView(ListView):
+#     model = Tutorial
+#     template_name = 'tutorial/index.html'
+#     context_object_name = 'tutorials'
+#     ordering = ['-Published']
 
 def index(request):
 
-    tutorials = Tutorial.get_all_images()
+    tutorials = Tutorial.get_all_tutorials()
     print(tutorials)
     context={
         'tutorials':tutorials,
     }
 
-    return redirect(request,'index.html', context)
+    return render(request,'tutorial/index.html', context)
 
 
 class TutorialDetailView(DetailView):
@@ -104,9 +104,9 @@ def new_tutorial(request):
         form = NewTutorialForm(request.POST, request.FILES)
         if form.is_valid():
             tutorial = form.save(commit=False)
-            tutorial.Author = current_user
+            tutorial.user = current_user
             tutorial.save()
-        return redirect('NewsToday')
+        return redirect('index')
 
     else:
         form = NewTutorialForm()
