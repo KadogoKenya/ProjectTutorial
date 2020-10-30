@@ -120,6 +120,8 @@ def new_tutorial(request):
     return render(request, 'new_tutorial.html', {"form": form})
 
 class MerchList(APIView):
+    permission_classes = (IsAuthenticatedOrReadOnly,)
+
     def get(self, request, format=None):
         all_merch = Tutorial.objects.all()
         serializers = MerchSerializer(all_merch, many=True)
@@ -131,3 +133,7 @@ class MerchList(APIView):
             serializers.save()
             return Response(serializers.data, status=status.HTTP_201_CREATED)
         return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
+
+        
+
+    
