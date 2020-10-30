@@ -39,7 +39,7 @@ urlpatterns = [
     path('logout/', auth_views.LogoutView.as_view(template_name='users/logout.html'), name='logout'),
     path('display_profile/', user_views.display_profile, name='display_profile'),
     url(r'^tinymce/', include('tinymce.urls')),
-    path('tutoriolproject-api/', views.MerchList.as_view(), name='tutorialproject_api'),
+    path('tutorialproject-api/', views.MerchList.as_view(), name='tutorialproject_api'),
     
 
     
