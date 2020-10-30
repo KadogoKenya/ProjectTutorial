@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'cloudinary',
     'bootstrap3',
     'rest_framework',
+    'rest_framework.authtoken',
     'tinymce',
     'crispy_forms',
     'django.contrib.admin',
