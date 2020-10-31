@@ -21,7 +21,9 @@ from users import views as user_views
 from django.contrib.auth import views as auth_views
 # from rest_framework.authtoken.views import obtain_auth_token
 from tutorialproject import views
+from rest_framework_jwt.views import obtain_jwt_token, refresh_jwt_token
 from rest_framework_simplejwt import views as jwt_views
+
 from tutorialproject.views import MerchList
 
 
@@ -42,9 +44,12 @@ urlpatterns = [
     path('tutorialproject-api/', views.MerchList.as_view(), name='tutorialproject_api'),
     
 
+    url(r'api-token-auth/', obtain_jwt_token),
+    url(r'api-token-refresh/', refresh_jwt_token),
     
-    path('api/token/', jwt_views.TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('api/token/refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
+    # path('api/token/', jwt_views.TokenObtainPairView.as_view(), name='obtain_jwt_token'),
+    # path('api/token/refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
+    
     # path('projector-api/', views.MerchList.as_view(), name='projector_api'),
     # path('profiler-api/', views.profileList.as_view(), name='profiler_api'),
     # url(r'^api-token-auth/', obtain_auth_token),

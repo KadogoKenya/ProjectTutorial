@@ -34,6 +34,7 @@ urlpatterns = [
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     
+    url(r'api/merch/merch-id/(?P<pk>[0-9]+)/$',views.MerchDescription.as_view())
 ]
 
 if settings.DEBUG:
